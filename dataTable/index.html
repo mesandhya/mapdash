@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <table id="example" class="display" width="100%"></table>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>  
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<!-- <script type="text/javascript" src="js/script.js"></script>   -->
+<script src="/js/dataSet.js"></script>
+<script>
+    
+ 
+new DataTable('#example', {
+    columns: [
+        { title: 'Province' },
+        { title: 'District' },
+        { title: 'Municipality' },
+        { title: 'Component.' },
+        { title: 'Indicator' },
+        { title: 'Value' }
+    ],
+    data: valuesOnly
+});
+</script>
+</body>
+</html>
