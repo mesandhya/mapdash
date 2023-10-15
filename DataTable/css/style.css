@@ -19,10 +19,28 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: 80%;
     /* max-width: 1100px; */
 }
 
 .container table {
     width: 100%;   
+}
+/* 
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td{
+    background-color: #000;
+    color: #fff;
+} */
+
+/* thead input {
+    width: 100%;
+} */
+
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
 }

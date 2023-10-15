@@ -1,7 +1,7 @@
  body{
         margin: 0;
         padding: 0;
-		background: #d1cece !important;
+		/* background: #d1cece !important; */
 		font-family: "Mukta", sans-serif;
       }
 	  
@@ -218,17 +218,14 @@ margin-right: 8px;
 }
 
 .top_nav{
+background: #d1cece;
 padding: 0rem 3rem;
 padding-left:0px !important;
 
 }
-.top_nav > div{
+/* .top_nav > div{
 margin-bottom: 1rem;
-}
-
-.top_nav > div{
-margin-bottom: 1rem;
-}
+} */
 
 .top_nav ul.nav > li{
 margin-left: 0px;

@@ -214,11 +214,39 @@ function highlightSelect()
     //     $('#districtSelect').parent().css("background-color","#F5F5F5");
     // }
 
+    const mainDropdown = document.getElementById("mainDropdown");
+    const secondDropdown = document.getElementById("secondDropdown");
+    
+    if (mainDropdown.value != "") {
+        mainDropdown.parent().css("background-color","#f5c775");
+    } else {
+        mainDropdown.parent().css("background-color", "#F5F5F5");
+    }
+    
+    if (secondDropdown.value != "") {
+        secondDropdown.parent().css("background-color","#f5c775");
+    } else {
+        secondDropdown.parent().css("background-color", "#F5F5F5");
+    }
+
+    if (composite_filter.value != "") {
+        composite_filter.parent().css("background-color", "#f5c775");
+    } else {
+        composite_filter.parent().css("background-color", "#F5F5F5");
+    }
+
     if(Global.provinceSelected){
         $('#provinceSelect').parent().css("background-color","#f5c775");
     }
     else{
         $('#provinceSelect').parent().css("background-color","#F5F5F5");
+    }
+
+    if(Global.districtSelected){
+        $('#districtSelect').parent().css("background-color","#f5c775");
+    }
+    else{
+        $('#districtSelect').parent().css("background-color","#F5F5F5");
     }
 
     if(Global.currentPalikaSelect != "All"){
@@ -233,6 +261,22 @@ function highlightSelect()
         // $('#filter_select_2').parent().css("background-color","#f5c775");
 
     }
+
+    // if(Global.provinceSelected){
+    //     $('#mainDropdown').parent().css("background-color","#f5c775");
+    // }
+    // else{
+    //     $('#mainDropdown').parent().css("background-color","#F5F5F5");
+    // }
+
+    // if(Global.provinceSelected){
+    //     $('#secondDropdown').parent().css("background-color","#f5c775");
+    // }
+    // else{
+    //     $('#secondDropdown').parent().css("background-color","#F5F5F5");
+    // }
+    
+    
 
     
 

@@ -105,7 +105,7 @@ function generalDistrict(feature)
         dashArray: "3",
         fillOpacity: 0,
         // stroke: "#0a0a0a",
-        fillColor: getProvinceColor(feature.properties.Province)
+        fillColor: "getProvinceColor(feature.properties.Province)"
       };
 }
 

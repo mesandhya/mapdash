@@ -57,6 +57,11 @@ var ProvinceNepaliName = {
     "7": "Sudurpaschim"
 }
 
+var DistrictName = {
+    "DAILEKH": "Dailekh",
+    "SARLAHI": "Sarlahi"
+}
+
 var RangeBracketColor = {
     "Very High" : "#edf8b1",
     "High" : "#7fcdbb",
@@ -388,6 +393,22 @@ class DataLayerClass{
     
         return "#fff";
     }
+
+    // getCompositeColor(f_id) {
+    //     // console.warn(f_id);
+    //         var compositedailekh = Data.compositeDailekh[Data.fidCodeMap[f_id]];
+    //         if (!compositedailekh)
+    //             return "#fff";
+
+    //         window.totalValue = parseFloat(compositedailekh.risk_score);
+
+    //         for (var range in RangeColor) {
+    //             var [min, max] = range.split(" - ").map(parseFloat);
+    //             if (totalValue >= min && totalValue < max) return RangeColor[range];
+    //         }
+
+    //         return "#fff";
+    //     }
 
     getCompositeColor(f_id) {
         // console.warn(f_id);

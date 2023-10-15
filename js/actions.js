@@ -2,7 +2,7 @@ $(document).ready(function()
 {
     $('#provinceSelect').on('change', function(e) {
         // console.log(Global.currentLayers)
-        Global.districtSelected = null;
+        // Global.districtSelected = null;
         if(e.target.value!="All"){
             focusProvince(e, e.target.value);
             console.log(e);
@@ -143,8 +143,9 @@ $(document).ready(function()
         $('#c_mayor_select').val("c_mayor");
         $('#c_filter_select_1').val("candidate");
         $('#provinceSelect').val("");
-        $('#districtSelect').empty();
-        $("#districtSelect").append(new Option("District",""));
+        $('#districtSelect').val("");
+        // $('#districtSelect').empty();
+        // $("#districtSelect").append(new Option("District",""));
         $('#palikaSelect').val("");
         // $('candidate_filters').val("");
         $('mainDropdown').val("");
@@ -297,6 +298,7 @@ async function focusCountry(){
     resetMap();
 
     Global.provinceSelected = null;
+    Global.districtSelected = null;
     Global.currentProvince = null;
 
     // console.log(Global.currentProvince);
@@ -335,7 +337,7 @@ async function focusProvince(evt, provinceNumber) {
     console.log(provinceNumber);
     Global.provinceSelected=provinceNumber;
     Global.currentProvince = Global.Provinces.find(x => x.id == provinceNumber).data;
-    // console.log(provinceNumber);
+    console.log(Global.Provinces);
 
     // console.log(Global.provinceSelected);
     Global.boundLevel = "Province";
@@ -349,7 +351,7 @@ async function focusProvince(evt, provinceNumber) {
     if(Global.currentFilter)
         Global.currentLayers[Global.currentLayers.length - 1].style=Filters[Global.currentFilter][lastLayer];
 
-    // console.log(Global.currentFilterLevel)
+    // console.log(Global.currentFilter)
     
     renderMap();
 }
@@ -391,6 +393,34 @@ function onEachMunicipalitiesFeature(feature, layer) {
 //     renderMap();
 // }
 
+// /*-- Works for only two districts --*/
+// async function focusDistrict(evt, districtNumber) {
+//     resetMap();
+  
+  
+//     console.log(districtNumber);
+//     Global.districtSelected = districtNumber;
+//     Global.currentDistrict = Global.Districts.find(x => x.id == districtNumber).data;
+//     Global.boundLevel = "District";
+  
+//     console.log(Global.Districts);
+  
+//     // Update the style for the district layer
+//     Global.currentLayers.filter(x => x.id=="municipality")[0].style = Filters["generalMunicipality"];
+//     // console.log(Filters["generalMunicipality"]);
+//     // Global.currentLayers.filter(x => x.id=="province")[0].style = Filters["nullProvince"];
+
+//     Global.currentLayers.filter(x => x.id=="district")[0].style = Filters["generalDistrict"];
+    
+//     // Remove other layers
+//     var lastLayer = Global.currentLayers[Global.currentLayers.length - 1].id;
+//     if(Global.currentFilter)
+//         Global.currentLayers[Global.currentLayers.length - 1].style=Filters[Global.currentFilter][lastLayer];
+//     // console.log(Global.currentFilterLevel);
+//     renderMap();
+// }
+
+/*-- Works for all districts --*/
 async function focusDistrict(evt, districtNumber) {
     resetMap();
 
@@ -405,15 +435,15 @@ async function focusDistrict(evt, districtNumber) {
     // Update the style for the district layer
     Global.currentLayers.filter(x => x.id=="municipality")[0].style = Filters["generalMunicipality"];
     // console.log(Filters["generalMunicipality"]);
-    Global.currentLayers.filter(x => x.id=="district")[0].style = Filters["nullDistrict"];
+    Global.currentLayers.filter(x => x.id=="district")[0].style = Filters["generalDistrict"];
     
     // Remove other layers
     var lastLayer = Global.currentLayers[Global.currentLayers.length - 1].id;
     if(Global.currentFilter)
         Global.currentLayers[Global.currentLayers.length - 1].style=Filters[Global.currentFilter][lastLayer];
-    
+    console.log(lastLayer);
     renderMap();
-}
+} 
 
 async function selectIndicator() {
     resetMap();
@@ -450,7 +480,7 @@ function filterMunicipalityByDistrict(d, district){
         }
         // if(NationalParks[d.properties.F_ID])
         //     return true
-        return Data.fidCodeMap[d.properties.F_ID].toString().substring(0,3) == district;
+        return Data.fidCodeDistrict[d.properties.F_ID].toString().substring(0,3) == district;
     })
     return data;
 }
@@ -458,17 +488,26 @@ function filterMunicipalityByDistrict(d, district){
 function setDistrictDropdown(id){
     $('#districtSelect').empty();
     $('#districtSelect').append('<option value="" disabled selected>District</option>');
-    $('#districtSelect').append('<option value="All" >All</option>');
+    // $('#districtSelect').append('<option value="All" >All</option>');
 
 
+    if (id == 2) {
+        // Append 'Sarlahi' with a value of 205
+        $('#districtSelect').append(new Option('Sarlahi', 205));
+    } else if (id == 6) {
+        // Append 'Dailekh' with a value of 606 when id is 6
+        $('#districtSelect').append(new Option('Dailekh', 606));
+    } else {
     for (const [key, value] of Object.entries(Data.fidCodeDistrict)) {
 
         if( (parseInt(value) >= parseInt(id)*100) && (parseInt(value) < (parseInt(id)+1)*100)){
             $('#districtSelect').append(new Option(Data.districtNepaliName[value], value));
-
+            
         }
     }
 }
+}
+
 
 function setIndicatorDropdown()
 {

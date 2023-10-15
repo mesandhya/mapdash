@@ -13,19 +13,6 @@ var Legends = {
     vulnerability_score: L.control({position: 'bottomleft'}),
     risk_score: L.control({position: 'bottomleft'}),
     component_indicator: L.control({position: 'bottomleft'}),
-    Percentage_of_economically_active_population: L.control({position: 'bottomleft'}),
-    Percentage_of_households_with_household_assets: L.control({position: 'bottomleft'}),
-    Percentage_of_households_with_television_access: L.control({position: 'bottomleft'}),
-    Percentage_of_households_that_are_female_owned: L.control({position: 'bottomleft'}),
-    Percentage_of_households_with_land_owned_by_female: L.control({position: 'bottomleft'}),
-    Dengue_Fever_Cases: L.control({position: 'bottomleft'}),
-    Cholera_Cases: L.control({position: 'bottomleft'}),
-    Population_density: L.control({position: 'bottomleft'}),
-    Median_Slope: L.control({position: 'bottomleft'}),
-    Median_Elevation: L.control({position: 'bottomleft'}),
-    Number_of_fire_incidence: L.control({position: 'bottomleft'}),
-    Total_Male: L.control({position: 'bottomleft'}),
-    component_indicator: L.control({position: 'bottomleft'}),
     // mayor_name: L.control({position: 'bottomleft'}),
     // mayor_party: L.control({position: 'bottomleft'}),
     // mayor_age: L.control({position: 'bottomleft'}),
@@ -285,54 +272,6 @@ Legends.risk_score.onAdd = function (map) {
     return createLegend(map, 'sensitivity');
 };
 
-
-Legends.Total_Male.onAdd = function (map) {
-    return createLegend(map, 'adapcap');
-};
-
-Legends.Percentage_of_economically_active_population.onAdd = function (map) {
-    return createLegend(map, 'exposure');
-};
-
-Legends.Percentage_of_households_with_household_assets.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
-};
-
-Legends.Percentage_of_households_with_television_access.onAdd = function (map) {
-    return createLegend(map, 'adapcap');
-};
-
-Legends.Percentage_of_households_that_are_female_owned.onAdd = function (map) {
-    return createLegend(map, 'exposure');
-};
-
-Legends.Percentage_of_households_with_land_owned_by_female.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
-};
-
-Legends.Dengue_Fever_Cases.onAdd = function (map) {
-    return createLegend(map, 'adapcap');
-};
-
-Legends.Cholera_Cases.onAdd = function (map) {
-    return createLegend(map, 'exposure');
-};
-
-Legends.Population_density.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
-};
-Legends.Median_Slope.onAdd = function (map) {
-    return createLegend(map, 'adapcap');
-};
-
-Legends.Median_Elevation.onAdd = function (map) {
-    return createLegend(map, 'exposure');
-};
-
-Legends.Number_of_fire_incidence.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
-};
-
 Legends.component_indicator.onAdd = function (map) {
     return createLegend(map, 'sensitivity');
 };
@@ -375,7 +314,8 @@ Legends.component_indicator.onAdd = function (map) {
         var text = RangeColor[key].replace(/^\s+|\s+$/g,"").replace("#","");
             Global.currentLegendKeys.push(text); 
             // Global.currentSummaryBody[toNepaliDigits(key)] = Summary[Global.currentFilter](key)
-          div.innerHTML += '<div style="cursor:pointer" id="legend_option_'+text+'" onclick="legendClick(\''+text+'\')" ondblclick="legendDblClick(\''+text+'\')">'+'<i style="background:' + RangeColor[key] + '"></i>' + key + "<br>"+"</div>";
+            var label = RangeLabels[key] || key;
+            div.innerHTML += '<div style="cursor:pointer" id="legend_option_'+text+'" onclick="legendClick(\''+text+'\')" ondblclick="legendDblClick(\''+text+'\')">'+'<i style="background:' + RangeColor[key] + '"></i>' + label + "<br>"+"</div>";
     });
     div.innerHTML += '</p>';
 

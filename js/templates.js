@@ -35,7 +35,7 @@ class TemplateClass{
     }
     risk_score(info){
         return `<p>` + Data.Municipalities[info.header.LCode] +`</p>` +
-        `<p>` + `  ` + info.body.risk_score + `  ` + `</p>`
+        `<p>` + `  ` + parseFloat(info.body.risk_score).toFixed(2) + `  ` + `</p>`
     }
 
     // component_indicator(info){
@@ -48,8 +48,9 @@ class TemplateClass{
 
     component_indicator(info){
       var selectedProperty = document.getElementById("secondDropdown").value;
+      console.log(selectedProperty)
       const replacedString = selectedProperty.replace(/_/g, ' ');
-      return `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + info.body[selectedProperty] + `<p>`
+      return `<p>` + `<u>` + replacedString + `</u> `+ `</p> ` + `<p>` + parseFloat(info.body[selectedProperty]).toFixed(2) + `<p>`
     }
 }
 

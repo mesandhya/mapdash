@@ -177,7 +177,6 @@ function count_composite_adapcap(key) {
 
 function count_composite_sensitivity(key) {
   data = regionSummaryFilter(Data.compositeDailekh);
-  console.log(data);
   if (key === "0 - 0.2") {
     return countRange(key, data);
   } else if (key === "0.2 - 0.4") {

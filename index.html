@@ -21,6 +21,8 @@
       href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
   </head>
   <body>
     <style>
@@ -34,25 +36,55 @@
       * :not(i) {
         font-family: "Mukta", sans-serif;
       }
+      #logo{
+            display: flex;
+            align-items: center;
+        }
       .full-width-select {
-      width: 100% !important;
-      box-sizing: border-box;
-    }
+        width: 100% !important;
+        box-sizing: border-box;
+      }
 
-    .filter_menu {
-  float: right; /* Float the filter menu to the right side */
-  margin-right: 20px; /* Add some right margin for spacing */
-}
+      .filter_menu {
+        float: right; /* Float the filter menu to the right side */
+        margin-right: 20px; /* Add some right margin for spacing */
+      }
+
+      /* .top_nav {
+        display: none;
+      }
+
+      .dist_div:hover + .top_nav {
+        display: inline-block;
+      } */
+
+      .dist_div {
+        display: flex;
+        /* justify-content: space-between; */
+        padding: 0 5% 0 2%;
+        background: #4b80d4;
+        margin-bottom: 0px;
+        /* height: 70px; */
+      }
+
+
     </style>
 
     <div class="">
-      <div class="top_nav">
-
-        <div class="dist_div">
-          <h2 style="padding-left: 25px; padding-top: 5px; align-items: center;"> Vulnerability and Risk Assessment</h2>
+      <div class="dist_div">
+        <div id="logo"><a href="index.html"><img src="/image/iwmi-logo-full-trans-white-43h (1).png" alt="GIIS" width="170"></a></div>
+        <div>
+          <h3 class="main-title" style="float: left;">Vulnerability and Risk Assessment</h3>
+        <!-- <h2 style="padding-left: 25px; padding-top: 5px; align-items: center;"> Vulnerability and Risk Assessment</h2> -->
         </div>
+      </div>
+      <div class="top_nav">
+        <!-- <div id="logo"><a href="index.html"><img src="/image/GIIS-logo.png" alt="GIIS" width="170" height="auto"></a></div>
 
         <div>
+        <h2 style="padding-left: 25px; padding-top: 5px; align-items: center;"> Vulnerability and Risk Assessment</h2>
+        </div> -->
+        
         <div class="regions_div" style="padding-top: 0px;">
           <div class="region_menu">
             <ul class="region_select_ul nav nav-tabs">
@@ -60,7 +92,7 @@
                 <div class="select-box">
                   <select id="provinceSelect">
                     <option value="" selected disabled hidden>Province</option>
-                    <option value="All">All</option>
+                    <!-- <option value="All">All</option> -->
                   </select>
                 </div>
               </li>
@@ -74,7 +106,7 @@
             </ul>
           </div>
 
-          <div class="region_menu">
+          <!-- <div class="region_menu">
             <ul class="region_select_ul nav nav-tabs">
               <li class="" style="padding-left: 20px;">
                 <div class="select-btn">
@@ -84,7 +116,7 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           <div class="regions_div" style="padding: 10px 10px 10px 10px;">          
             <div class="select-box">
@@ -177,12 +209,11 @@
             </div>
           </div> -->
 
-          <div class="button" style="float: right;">
-          <button onclick="window.location.href= 'dataTable/index.html';">
-            Raw Data
-          </div>
-
-          </div>
+          <button id="dataTableButton">
+            <a href="/DataTable/index.html" target="_blank" style="text-decoration: none; color: inherit;">
+                Raw Data
+            </a>
+          </button>
           
 
           <!-- <div class="filter_menu">
@@ -198,7 +229,6 @@
 							</li>
               </ul>
           </div> -->
-        </div>
 
         
 
@@ -207,11 +237,7 @@
         
       </div>
 
-      </div>
     </div>
-
-    
-
 
     <script>
       async function fetchJSONData() {
@@ -319,6 +345,8 @@ floodButton.addEventListener("click", function() {
     </script> -->
   
     <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script> -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -331,7 +359,7 @@ floodButton.addEventListener("click", function() {
 
     <script src="js/jquery.csv.min.js" type="text/javascript"></script>
 
-    <div id="map" style="min-height:86vh; width: 100%; height: 87vh; padding-top: 5px;">
+    <div id="map" style="min-height:86vh; width: 100%; height: 88vh;">
       <!-- <div id="accordion" class="summary_div">
         <div id="info_div" class="info_div">
           
@@ -371,9 +399,17 @@ floodButton.addEventListener("click", function() {
     </script> -->
     
 
+    <!-- <script src="DataTable/js/data.js"></script>
+    <script src="DataTable/js/dataSet.js"></script>
+    <script src="DataTable/js/script.js"></script> -->
+   
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+
   </body>
 
-  <script src="js/templates.js?v=1.0.12" type="text/javascript"></script>
+  
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="js/templates.js?v=1.0.12" type="text/javascript"></script>
   <script src="js/data.js?v=1.0.12" type="text/javascript"></script>
   <script src="js/global.js?v=1.0.12" type="text/javascript"></script>
   <script src="js/filters.js?v=1.0.12" type="text/javascript"></script>

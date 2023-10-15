@@ -55,7 +55,7 @@ async function initGeoJsons() {
     Global.districtGeoJson = L.geoJson(data, {
       onEachFeature: onEachDistrictFeature,
       style: function (feature) {
-        return { color: "#000", weight: 100, fillOpacity: 1 };
+        return { color: "#000", weight: 1, fillOpacity: 0 };
       },
     });
     // Global.allDistrictGeoJson=L.geoJson( data, {
@@ -66,7 +66,16 @@ async function initGeoJsons() {
     //     });
     Global.Districts = addDistrictToMap(data, Global.map);
     addDistrictToSelect(data);
+    // console.log(data)
   });
+
+  // await $.getJSON("NepalGeoJSONFiles/newdistricts.json", function (data) {
+  //   GeoJsons.district = data;
+  //   Global.Districts = addDistrictToMap(data, Global.map);
+  //   addDistrictToSelect(data);
+
+  // });
+
 
   await $.getJSON("NepalGeoJSONFiles/newmunicipalities.json", function (data) {
     GeoJsons.municipality = data;
@@ -90,10 +99,10 @@ async function initGeoJsons() {
     // });
   });
   await $.getJSON("NepalGeoJSONFiles/newprovince.json", function (data) {
+    // console.log(data)
     GeoJsons.province = data;
     Global.Provinces = addProvinceToMap(data, Global.map);
     addProvinceToSelect(data);
-
   });
 
   // await $.getJSON("NepalGeoJSONFiles/Dailekh.geojson", function (data) {
@@ -372,17 +381,21 @@ function addProvinceToMap(data, map) {
 function addProvinceToSelect(data) {
   data.features.forEach((element) => {
     var province_name = element.properties.PR_NAME;
-    console.log(element.properties.PR_NAME);
+    // console.log(element.properties.PR_NAME);
     var province_id = element.properties.Province;
+
     // console.log(province_id);
     // var option = '<option value="'+element.properties.PR_NAME+'" >'+element.properties.PR_NAME+'</option>';
     // $('#provinceSelect').append(option);
+
+    if (province_id === 2 || province_id === 6) {
     $("#provinceSelect").append(
       $("<option>", {
         value: province_id,
         text: ProvinceNepaliName[province_id],
       })
     );
+    }
   });
 }
 
@@ -420,7 +433,7 @@ function addDistrictToMap(data, map) {
     var d = {
       id: element.properties.fid,
       data: L.geoJson(data, {
-        style: Filters.generalDistrict,
+        style: null,
         filter: function (feature, layer) {
           return feature.properties.fid == element.properties.fid;
         },
@@ -431,12 +444,35 @@ function addDistrictToMap(data, map) {
   return districts;
 }
 
+/*-- Works for only two districts --*/
 function addDistrictToSelect(data) {
   data.features.forEach((element) => {
     var district = element.properties.DISTRICT;
-    var district_id = element.id;
+    var district_id = element.properties.fid;
+    // console.log(district)
     // var option = '<option value="'+element.properties.PR_NAME+'" >'+element.properties.PR_NAME+'</option>';
     // $('#provinceSelect').append(option);
+    
+    if(district_id === 14 || district_id === 66) {
+    $("#districtSelect").append(
+      $("<option>", {
+        value: district_id,
+        text: district,
+      })
+    );
+  }
+  });
+}
+
+/*-- // Works for all districts
+function addDistrictToSelect(data) {
+  data.features.forEach((element) => {
+    var district = element.properties.DISTRICT;
+    var district_id = element.properties.fid;
+    // console.log(district)
+    // var option = '<option value="'+element.properties.PR_NAME+'" >'+element.properties.PR_NAME+'</option>';
+    // $('#provinceSelect').append(option);
+    
     $("#districtSelect").append(
       $("<option>", {
         value: district_id,
@@ -444,7 +480,7 @@ function addDistrictToSelect(data) {
       })
     );
   });
-}
+} --*/
 
 function addMunicipalitiesToMap(data, map) {
   Global.municipalityGeoJson = L.geoJson(data, {
@@ -484,7 +520,7 @@ function onEachDistrictFeature(feature, layer) {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
-      click: zoomToProvince,
+      click: zoomToDistrict,
     });
 }
 
@@ -514,10 +550,15 @@ function onMapClick(e) {
 
 function zoomToProvince(e) {
   province_number = e.target.feature.properties.Province;
-
+  console.log(e.target.feature.properties.Province)
   map.fitBounds(e.target.getBounds());
 }
 
+function zoomToDistrict(e) {
+  district_number = e.target.feature.properties.fid;
+  console.log(e.target.feature.properties.fid)
+  map.fitBounds(e.target.getBounds());
+}
 
 function resetToKTM() {
   console.log(Global.currentLayers);
