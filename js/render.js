@@ -214,26 +214,40 @@ function highlightSelect()
     //     $('#districtSelect').parent().css("background-color","#F5F5F5");
     // }
 
-    const mainDropdown = document.getElementById("mainDropdown");
-    const secondDropdown = document.getElementById("secondDropdown");
+    // const mainDropdown = document.getElementById("mainDropdown");
+    // const secondDropdown = document.getElementById("secondDropdown");
     
-    if (mainDropdown.value != "") {
-        mainDropdown.parent().css("background-color","#f5c775");
-    } else {
-        mainDropdown.parent().css("background-color", "#F5F5F5");
+    // if (mainDropdown.value != "") {
+    //     mainDropdown.parent().css("background-color","#f5c775");
+    // } else {
+    //     mainDropdown.parent().css("background-color", "#F5F5F5");
+    // }
+    
+    // if (secondDropdown.value != "") {
+    //     secondDropdown.parent().css("background-color","#f5c775");
+    // } else {
+    //     secondDropdown.parent().css("background-color", "#F5F5F5");
+    // }
+
+    // if (composite_filter.value != "") {
+    //     composite_filter.parent().css("background-color", "#f5c775");
+    // } else {
+    //     composite_filter.parent().css("background-color", "#F5F5F5");
+    // }
+
+    if(Global.provinceSelected){
+        $('#mainDropdown').parent().css("background-color","#f5c775");
     }
-    
-    if (secondDropdown.value != "") {
-        secondDropdown.parent().css("background-color","#f5c775");
-    } else {
-        secondDropdown.parent().css("background-color", "#F5F5F5");
+    else{
+        $('#mainDropdown').parent().css("background-color","#F5F5F5");
+    }
+    if(Global.provinceSelected){
+        $('#secondDropdown').parent().css("background-color","#f5c775");
+    }
+    else{
+        $('#secondDropdown').parent().css("background-color","#F5F5F5");
     }
 
-    if (composite_filter.value != "") {
-        composite_filter.parent().css("background-color", "#f5c775");
-    } else {
-        composite_filter.parent().css("background-color", "#F5F5F5");
-    }
 
     if(Global.provinceSelected){
         $('#provinceSelect').parent().css("background-color","#f5c775");
