@@ -121,11 +121,24 @@ async function initData() {
     });
   });
 
-  await $.ajax("csv/CodeName.csv", {
+  await $.ajax("csv/MunicipalityName.csv", {
     success: function(data) {
         data = $.csv.toObjects(data);
        data.forEach(function(d){
             Data.MunicipalityNames[d.Lcode] = d;
+        // console.log(Data.MunicipaltyNames[d.Lcode]);
+        });
+    },
+    error: function() {
+        alert("error")
+    }
+  }); 
+
+  await $.ajax("csv/ProvinceName.csv", {
+    success: function(data) {
+        data = $.csv.toObjects(data);
+       data.forEach(function(d){
+            Data.ProvinceNames[d.Lcode] = d;
         // console.log(Data.MunicipaltyNames[d.Lcode]);
         });
     },
@@ -263,6 +276,12 @@ async function initData() {
     });
   });
 
+  await $.getJSON("json/objectidcodeprovince.json", function (data) {
+    data.forEach(function (d) {
+      Data.objectidCodeProvince[d.OBJECTID] = d.Lcode;
+    });
+  });
+
   await $.getJSON("json/districtnepaliname.json", function (data) {
     data.forEach(function (d) {
       Data.districtNepaliName[d.Lcode] = d.D_np;
@@ -315,7 +334,7 @@ async function initData() {
   await $.ajax("csv/rawData.csv", {
     success: function(data) {
        Data.Raw = Data.Raw.concat($.csv.toObjects(data));
-      //  console.log(Data.Raw);
+       console.log(Data.Raw);
     },
     error: function() {
         alert("error")

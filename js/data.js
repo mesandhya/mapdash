@@ -7,6 +7,7 @@ var Data = {
     HazardFlood: [],
     compositeHeader: [],
     MunicipalityNames: [],
+    ProvinceNames: [],
     // Indicator: [],
     hazardDailekh: [],
     compositeDailekh: [],
@@ -16,6 +17,7 @@ var Data = {
     fidCodeMap: [],
     fidCodeDistrict: [],
     fidCodeMunicipality: [],
+    objectidCodeProvince: [],
     districtNepaliName: [],
     registeredVoters: [],
     Candidates: [],
@@ -372,7 +374,7 @@ class DataLayerClass{
     getCompositeColorDailekh(f_id) {
         // console.warn(f_id);
         var selectedProperty = document.getElementById("composite_filter").value;
-        // console.log(selectedProperty);
+        console.log(selectedProperty);
         var compositedailekh = Data.compositeDailekh[Data.fidCodeMap[f_id]];
         if (!compositedailekh)
             return "#fff";
@@ -429,11 +431,10 @@ class DataLayerClass{
     getComponentColor(f_id) {
         // console.warn(f_id);
         var selectedProperty = document.getElementById("secondDropdown").value;
-        // console.log(selectedProperty);
+        console.log(selectedProperty);
         var rawdata = Data.rawData[Data.fidCodeMap[f_id]];
         if (!rawdata)
             return "#fff";
-    
         // var properties = ['Composite Adaptive Capacity', 'Composite Exposure', 'Composite Sensitivity'];
     
         window.totalValue = parseFloat(rawdata[selectedProperty]);

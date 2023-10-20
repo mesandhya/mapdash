@@ -17,21 +17,21 @@ class TemplateClass{
     
     composite_adapcap(info){
         return `<h2>` + `Composite Adaptive Capacity` +`</h2>` +
-        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + info.body.composite_adapcap + `<p>`
+        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.composite_adapcap).toFixed(2) + `<p>`
     }
 
     composite_exposure(info){
         return `<h2>` + `Composite Exposure` +`</h2>` +
-        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + info.body.composite_exposure + `<p>`
+        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.composite_exposure).toFixed(2) + `<p>`
     }
     
     composite_sensitivity(info){
         return `<h2>` + `Composite Sensitvity` +`</h2>` +
-        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + info.body.composite_sensitivity + `<p>`
+        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.composite_sensitivity).toFixed(2) + `<p>`
     }
 
     vulnerability_score(info){
-        return `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + info.body.vulnerability_score + `<p>`
+        return `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.vulnerability_score).toFixed(2) + `<p>`
     }
     risk_score(info){
         return `<p>` + Data.Municipalities[info.header.LCode] +`</p>` +
@@ -50,7 +50,7 @@ class TemplateClass{
       var selectedProperty = document.getElementById("secondDropdown").value;
       console.log(selectedProperty)
       const replacedString = selectedProperty.replace(/_/g, ' ');
-      return `<p>` + `<u>` + replacedString + `</u> `+ `</p> ` + `<p>` + parseFloat(info.body[selectedProperty]).toFixed(2) + `<p>`
+      return `<p>` + Data.Municipalities[info.header.LCode] + `</p> ` + `<p>` + parseFloat(info.body[selectedProperty]).toFixed(2) + `<p>`
     }
 }
 

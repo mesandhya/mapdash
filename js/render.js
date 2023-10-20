@@ -10,8 +10,11 @@ function renderMap(){
         renderBubble();
     fitBounds();
     highlightSelect();
-        if(Global.boundLevel == "District") {
+    if(Global.boundLevel == "District") {
     renderMunicipalityNames();
+    }
+    if(Global.boundLevel == "Country") {
+    renderProvinceNames();
     }
 }
 
@@ -83,10 +86,12 @@ function renderLayer()
     }); 
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+        // relation[boundary=administrative][admin_level=6](area.a),
         {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, Tiles &copy; <a href="https://carto.com/attribution">CARTO</a>',
         }
+        
       ).addTo(Global.map);
     
 }
@@ -138,6 +143,41 @@ function renderMunicipalityNames(){
             L.marker([centroid[1]+parseFloat(municipalityname.Y) , centroid[0]+parseFloat(municipalityname.X)], {
                 icon: L.divIcon({
                     html: '<span style="font-weight:500; display: inline-block; transform: rotate('+(textTransform+parseInt(municipalityname.Transform_Angle))+'deg); font-size:'+(baseFont+parseInt(municipalityname.Font_size) )+'px;">'+municipalityname.Municipality+'</span>'
+                }),
+                opacity: 1,
+                zIndexOffset: 10000     // Make appear above other map features
+            }).addTo(Global.map);
+        }
+    
+    
+    })
+    
+}
+
+function renderProvinceNames(){
+    GeoJsons.province.features.forEach(function(d){
+        // console.log(d);
+        var Lcode = Data.objectidCodeProvince[d.properties.OBJECTID]
+        // console.log(Lcode)
+        var provincename = Data.ProvinceNames[Lcode]
+        // console.log(provincename)
+        var default_center = [  81.46982838917172, 29.271845521328405]
+        if(provincename){
+            centroid = getCenterPoint(d.geometry.coordinates[0])
+            textTransform = 0;
+            baseFont = 35;
+            
+            // if(Global.boundLevel == "Province")
+            //     baseFont = 10;
+            // else if(Global.boundLevel == "District")
+            //     baseFont = 10;
+            if(isNaN(centroid[1]) || isNaN(centroid[0]) )
+            {
+                centroid = default_center
+            }
+            L.marker([centroid[1]+parseFloat(provincename.Y) , centroid[0]+parseFloat(provincename.X)], {
+                icon: L.divIcon({
+                    html: '<span style="font-weight:500; color:#808080; display: inline-block; transform: rotate('+(textTransform+parseInt(provincename.Transform_Angle))+'deg); font-size:'+(baseFont+parseInt(provincename.Font_size) )+'px;">'+provincename.Province+'</span>'
                 }),
                 opacity: 1,
                 zIndexOffset: 10000     // Make appear above other map features
@@ -235,18 +275,18 @@ function highlightSelect()
     //     composite_filter.parent().css("background-color", "#F5F5F5");
     // }
 
-    if(Global.provinceSelected){
-        $('#mainDropdown').parent().css("background-color","#f5c775");
-    }
-    else{
-        $('#mainDropdown').parent().css("background-color","#F5F5F5");
-    }
-    if(Global.provinceSelected){
-        $('#secondDropdown').parent().css("background-color","#f5c775");
-    }
-    else{
-        $('#secondDropdown').parent().css("background-color","#F5F5F5");
-    }
+    // if(Global.provinceSelected){
+    //     $('#mainDropdown').parent().css("background-color","#f5c775");
+    // }
+    // else{
+    //     $('#mainDropdown').parent().css("background-color","#F5F5F5");
+    // }
+    // if(Global.provinceSelected){
+    //     $('#secondDropdown').parent().css("background-color","#f5c775");
+    // }
+    // else{
+    //     $('#secondDropdown').parent().css("background-color","#F5F5F5");
+    // }
 
 
     if(Global.provinceSelected){
