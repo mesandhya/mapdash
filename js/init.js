@@ -32,6 +32,13 @@ async function init() {
       id: "municipality",
     },
   ];
+
+  // Set default values for province and district dropdowns
+  $('#provinceSelect').val("6").trigger('change'); // Karnali province
+  setDistrictDropdown("6"); // Set districts for Karnali province
+  $('#districtSelect').val("606").trigger('change'); // Dailekh district
+
+  highlightSelect();
   // Global.map.on('click', onMapClick);
   await resetMap();
   await resetGeoJsons();

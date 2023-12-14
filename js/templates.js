@@ -30,6 +30,11 @@ class TemplateClass{
         `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.composite_sensitivity).toFixed(2) + `<p>`
     }
 
+    composite_hazard(info){
+        return `<h2>` + `Composite Hazard` +`</h2>` +
+        `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.composite_sensitivity).toFixed(2) + `<p>`
+    }
+
     vulnerability_score(info){
         return `<p>` + `<u>` + Data.Municipalities[info.header.LCode] + `</u> `+ `: ` + parseFloat(info.body.vulnerability_score).toFixed(2) + `<p>`
     }
@@ -64,6 +69,7 @@ var Templates = {
     composite_adapcap: Template.composite_adapcap,
     composite_exposure: Template.composite_exposure,
     composite_sensitivity: Template.composite_sensitivity,
+    composite_hazard: Template.composite_hazard,
     vulnerability_score: Template.vulnerability_score,
     risk_score: Template.risk_score,
     component_indicator: Template.component_indicator,

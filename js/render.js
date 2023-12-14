@@ -239,6 +239,8 @@ function resetFilterHighlight()
 {
     $('#lead_mayor_select').parent().css("background-color","#F5F5F5");
     // $('#candidate_filters').parent().css("background-color","#F5F5F5");
+    $('#composite_filter').parent().css("background-color","#F5F5F5");
+    $('#filter_select_2').parent().css("background-color","#F5F5F5");
     $('#filter_select_2').parent().css("background-color","#F5F5F5");
     $('#mayor_select_old').parent().css("background-color","#F5F5F5");
     $('#mayor_select').parent().css("background-color","#F5F5F5");
@@ -311,8 +313,8 @@ function highlightSelect()
     }
     resetFilterHighlight();
 
-    if(Global.currentFilter == "voters_count"){
-        // $('#filter_select_2').parent().css("background-color","#f5c775");
+    if(Global.currentFilter == "risk_score"){
+        $('#filter_select_2').parent().css("background-color","#f5c775");
 
     }
 
@@ -331,26 +333,48 @@ function highlightSelect()
     // }
     
     
+     // Function to handle dropdown change event
+     function handleDropdownChange(dropdownId) {
+        var selectedValue = $("#" + dropdownId).val();
+        if (selectedValue !== "") {
+          $("#" + dropdownId).parent().css("background-color", "#f5c775");
+        } else {
+          $("#" + dropdownId).parent().css("background-color", ""); // Reset to default color
+        }
+      }
 
+      // Event listener for the mainDropdown
+      $("#mainDropdown").change(function() {
+        handleDropdownChange("mainDropdown");
+      });
+
+      // Event listener for the secondDropdown
+      $("#secondDropdown").change(function() {
+        handleDropdownChange("secondDropdown");
+      });
+      $("#composite_filter").change(function() {
+        // Reset background color for mainDropdown and secondDropdown
+        $("#mainDropdown").parent().css("background-color", "");
+        $("#secondDropdown").parent().css("background-color", "");
     
 
-    // var candidate_filters = ["c_mayor_candidate", "c_vice_mayor_candidate",  "c_mayor_age", "c_vice_mayor_age", "c_mayor_gender", "c_vice_mayor_age", "ward_president_candidate", "ward_president_gender","ward_president_age" ]
+    var composite_filter = ["composite_adapcap", "composite_exposure",  "composite_sensitivity", "vulnerability_score", "composite_hazard"]
     var oldfilters = ["mayor_party", "mayor_age", "mayor_margin", "mayor_gender","vice_mayor_party", "vice_mayor_age", "vice_mayor_margin", "vice_mayor_gender"];
     
-    // if(candidate_filters.includes(Global.currentFilter)){
-    //     $('#candidate_filters').parent().css("background-color","#f5c775");
+    if(composite_filter.includes(Global.currentFilter)){
+        $('#composite_filter').parent().css("background-color","#f5c775");
 
-    // }
+    }
 
     if(oldfilters.includes(Global.currentFilter)){
         $('#filter_select_1').parent().css("background-color","#f5c775");
         $('#mayor_select_old').parent().css("background-color","#f5c775");
-
     }
 
     if(Global.currentFilter=="lead_mayor" || Global.currentFilter=="lead_vice_mayor" ){
         $('#lead_mayor_select').parent().css("background-color","#f5c775");
 
     }
+});
 
 }

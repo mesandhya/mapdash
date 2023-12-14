@@ -11,7 +11,7 @@ var Global = {
     currentGeoLevel: null,
     provinceSelected: 0,
     districtSelected: 0,
-    optionSelected: 0,
+    selectedValue: 0,
     currentProvince: null,
     currentDistrict: null,
     currentParty: null,

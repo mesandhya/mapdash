@@ -5,7 +5,7 @@ $(document).ready(function()
         // Global.districtSelected = null;
         if(e.target.value!="All"){
             focusProvince(e, e.target.value);
-            console.log(e);
+            // console.log(e);
             setDistrictDropdown(e.target.value);
         }else{
             focusCountry();
@@ -19,7 +19,7 @@ $(document).ready(function()
     $('#districtSelect').on('change', function(e) {
         if(e.target.value!="All"){
             focusDistrict(e, e.target.value);
-            console.log(e);
+            // console.log(e);
         }
         else{
             Global.districtSelected = null;
@@ -147,12 +147,13 @@ $(document).ready(function()
         // $('#districtSelect').empty();
         // $("#districtSelect").append(new Option("District",""));
         $('#palikaSelect').val("");
-        // $('candidate_filters').val("");
+        $('composite_filter').val("");
         $('mainDropdown').val("");
 
 
         Global.districtSelected = null;
         Global.provinceSelected = null;
+        Global.optionSelected = null;
         Global.currentBubble = "none";
 
         Global.currentPalikaSelect = "All";

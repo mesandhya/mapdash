@@ -26,6 +26,9 @@ var Popups = {
     composite_sensitivity: {
       municipality: composite_sensitivity
     },
+    composite_hazard: {
+      municipality: composite_hazard
+    },
     vulnerability_score: {
       municipality: vulnerability_score
     },
@@ -190,6 +193,10 @@ function composite_sensitivity(feature){
   // }
   
   // // Return null function if the conditions are not met
+  return getDistrictPopUpDiv(info, feature);
+}
+function composite_hazard(feature){
+  var info = DataLayer.getCompositeInfoDailekh(feature.properties.F_ID);
   return getDistrictPopUpDiv(info, feature);
 }
 

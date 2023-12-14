@@ -32,6 +32,9 @@ var Filters = {
     composite_sensitivity:{
         municipality: composite_sensitivity
     },
+    composite_hazard:{
+        municipality: composite_hazard
+    },
 
     vulnerability_score:{
         municipality: vulnerability_score
@@ -347,7 +350,7 @@ function composite_feature(feature, featureType) {
     return {
         weight: 0.5,
         opacity: opacity,
-        color: "#fff",
+        color: "#000",
         dashArray: "1",
         fillOpacity: 1,
         fillColor: color
@@ -367,8 +370,12 @@ function composite_sensitivity(feature) {
     return composite_feature(feature, "sensitivity");
 }
 
+function composite_hazard(feature) {
+    return composite_feature(feature, "hazard");
+}
+
 function vulnerability_score(feature) {
-    return composite_feature(feature, "sensitivity");
+    return composite_feature(feature, "vulnerability");
 }
 function risk_score(feature) {
     return comp_feature(feature, "sensitivity");

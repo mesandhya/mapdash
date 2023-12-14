@@ -13,6 +13,8 @@ $(document).ready(function() {
 
     $('#example').DataTable( {
         // 'ajax': './data/datSet.js',
+        pageLength: 15,
+
         columns: [
         
             { title: 'Province' },
@@ -20,12 +22,25 @@ $(document).ready(function() {
             { title: 'Municipality' },
             { title: 'Component.' },
             { title: 'Indicator' },
-            { title: 'Value' },
+            {
+                title: 'Value',
+                render: function(data, type, row) {
+                    if (type === 'display') {
+                        // Check if data is a number
+                        if (!isNaN(parseFloat(data)) && isFinite(data)) {
+                            // Round to two decimal places
+                            return Number(data).toFixed(2);
+                        } else {
+                            return data;
+                        }
+                    }
+                    return data;
+                }
+            } 
 
            
         ],
         data: valuesOnly,
-        pageLength: 20,
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'

@@ -10,6 +10,7 @@ var Legends = {
     composite_adapcap: L.control({position: 'bottomleft'}),
     composite_exposure: L.control({position: 'bottomleft'}),
     composite_sensitivity: L.control({position: 'bottomleft'}),
+    composite_hazard: L.control({position: 'bottomleft'}),
     vulnerability_score: L.control({position: 'bottomleft'}),
     risk_score: L.control({position: 'bottomleft'}),
     component_indicator: L.control({position: 'bottomleft'}),
@@ -264,12 +265,16 @@ Legends.composite_sensitivity.onAdd = function (map) {
     return createLegend(map, 'sensitivity');
 };
 
+Legends.composite_hazard.onAdd = function (map) {
+    return createLegend(map, 'hazard');
+};
+
 Legends.vulnerability_score.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
+    return createLegend(map, 'vulnerability');
 };
 
 Legends.risk_score.onAdd = function (map) {
-    return createLegend(map, 'sensitivity');
+    return createLegend(map, 'risk');
 };
 
 Legends.component_indicator.onAdd = function (map) {

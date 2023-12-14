@@ -4,6 +4,7 @@ var Summary = {
     composite_adapcap: count_composite_adapcap,
     composite_exposure: count_composite_exposure,
     composite_sensitivity: count_composite_sensitivity,
+    composite_hazard: count_composite_hazard,
     vulnerability_score: count_vulnerability_score,
     risk_score: count_risk_score,
     component_indicator: count_component_indicator,
@@ -176,6 +177,23 @@ function count_composite_adapcap(key) {
 }
 
 function count_composite_sensitivity(key) {
+  data = regionSummaryFilter(Data.compositeDailekh);
+  if (key === "0 - 0.2") {
+    return countRange(key, data);
+  } else if (key === "0.2 - 0.4") {
+    return countRange(key, data);
+  } else if (key === "0.4 - 0.6") {
+    return countRange(key, data);
+  } else if (key === "0.6 - 0.8") {
+    return countRange(key, data);
+  } else if (key === "0.8 - 1") {
+    return countRange(key, data);
+  } else {
+    return toNepaliDigits(0);
+  }
+}
+
+function count_composite_hazard(key) {
   data = regionSummaryFilter(Data.compositeDailekh);
   if (key === "0 - 0.2") {
     return countRange(key, data);

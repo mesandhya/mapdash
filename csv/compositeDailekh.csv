@@ -1,4 +1,4 @@
-LCode,District,Area,composite_adapcap,composite_exposure,composite_sensitivity,Composite Hazard,Vulnerability,vulnerability_score,Risk,risk_score
+LCode,District,Area,composite_adapcap,composite_exposure,composite_sensitivity,composite_hazard,Vulnerability,vulnerability_score,Risk,risk_score
 60601,Dailekh,Naumule Gaunpalika,0.175882459,0.281976069,0.362159378,0.305958574,0.298461896,0.724933856,0.032079718,0.652489532
 60602,Dailekh,Mahabu Gaunpalika,0.357171933,0.263788714,0.369611167,0.542247045,0.237596432,0.484874612,0.033966698,0.69487402
 60603,Dailekh,Bhairabi Gaunpalika,0.366479803,0.057991718,0.312820649,0.276063541,0.198178199,0.32940531,0.003030527,0

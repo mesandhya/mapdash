@@ -133,7 +133,7 @@
   },
   {
     "id": 23,
-    "Indicator Name": "Household_Count_Change",
+    "Indicator Name": "Household_Count_Change_(2011-2021)",
     "component_id": 2,
     "Component": "Exposure"
   },
@@ -355,7 +355,7 @@
   },
   {
     "id": 60,
-    "Indicator Name": "Percentage_fo_dalit_population",
+    "Indicator Name": "Percentage_of_dalit_population",
     "component_id": 3,
     "Component": "Sensitivity"
   },
@@ -505,13 +505,13 @@
   },
   {
     "id": 85,
-    "Indicator Name": "Number_of_flood_incidence",
-    "component_id": 4,
-    "Component": "Hazard"
+    "Indicator Name": "Burnt_area",
+    "component_id": 3,
+    "Component": "Sensitivity"
   },
   {
     "id": 86,
-    "Indicator Name": "Total_Male",
+    "Indicator Name": "Number_of_flood_incidence",
     "component_id": 4,
     "Component": "Hazard"
   },
@@ -613,7 +613,7 @@
   },
   {
     "id": 103,
-    "Indicator Name": "Annual_total_wet-day_precipitation",
+    "Indicator Name": "Annual_total_wet",
     "component_id": 4,
     "Component": "Hazard"
   },
@@ -706,5 +706,53 @@
     "Indicator Name": "Warm_spell_duration_indicator",
     "component_id": 4,
     "Component": "Hazard"
+  },
+  {
+    "id": 119,
+    "Indicator Name": "Percentage_of_households_with_Tubewell_/_handpump",
+    "component_id": 1,
+    "Component": "Adaptive Capacity"
+  },
+  {
+    "id": 120,
+    "Indicator Name": "Clinical_Malaria_Cases",
+    "component_id": 2,
+    "Component": "Exposure"
+  },
+  {
+    "id": 121,
+    "Indicator Name": "Filariasis_Cases",
+    "component_id": 2,
+    "Component": "Exposure"
+  },
+  {
+    "id": 122,
+    "Indicator Name": "Number_of_landslide_incidence",
+    "component_id": 4,
+    "Component": "Hazard"
+  },
+  {
+    "id": 123,
+    "Indicator Name": "Number_of_coldwaves_incidence",
+    "component_id": 4,
+    "Component": "Hazard"
+  },
+  {
+    "id": 124,
+    "Indicator Name": "Number_of_death_by_cold_waves",
+    "component_id": 4,
+    "Component": "Hazard"
+  },
+  {
+    "id": 125,
+    "Indicator Name": "Air_Pollution_Area",
+    "component_id": 4,
+    "Component": "Hazard"
+  },
+  {
+    "id": 126,
+    "Indicator Name": "Annual_total_wet",
+    "component_id": 4,
+    "Component": "Hazard"
   }
- ]
+]
